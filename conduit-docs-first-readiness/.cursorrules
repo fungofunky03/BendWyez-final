@@ -1,0 +1,46 @@
+# Conduit Bending Calculator Cursor/Windsurf Rules
+
+## Required Read Order
+
+Before writing or modifying code, read:
+
+1. `/docs/00-index.md`.
+2. `task_plan.md`.
+3. `progress.md`.
+4. `findings.md`.
+5. `constitution.md`.
+6. `spec.md`.
+7. `/docs/06-ai/llm_usage_guide.md`.
+8. `/docs/06-ai/cursor_windsurf_rules.md`.
+
+## Scope Control
+
+- Execute only the current authorized phase in `task_plan.md`.
+- Do not implement future phases early.
+- Stop and report ambiguity instead of guessing.
+- Do not add dependencies unless a documented need exists in the current phase.
+- Do not replace file-based execution memory with chat memory.
+
+## UI Rules
+
+- Build for electricians on active construction sites.
+- Use a dark, high-contrast UI: black/deep charcoal backgrounds and white/light-gray text.
+- Use blue for interactive elements and reference lines.
+- Use green only for physically bent conduit portions.
+- Use gray for straight conduit sections.
+- Use bold, legible typography for fractional inches and degrees.
+- Avoid sterile calculator forms where possible; calculator inputs and outputs should be overlaid on SVG diagrams with leader lines.
+- Calculations update dynamically on change. Do not add Calculate or Submit buttons.
+
+## Architecture Rules
+
+- Frontend stack: React, TypeScript, Vite, and Tailwind CSS.
+- No backend database, external API dependency, telemetry, or network-dependent runtime behavior unless future project files explicitly authorize it.
+- App logic must execute client-side.
+- Top Bar state must include Bender Selection, Material, and Trade Size.
+
+## Calculation Rules
+
+- Do not guess formulas.
+- Do not hardcode unverified shrink constants, deducts, conduit dimensions, trade-size defaults, or bender defaults.
+- Log verified formulas and math clarifications in `findings.md` before relying on them broadly.
