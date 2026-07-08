@@ -21,6 +21,8 @@ Prompt 0 acceptance criteria:
 
 Status: completed in this workspace on 2026-07-07.
 
+mpt 1. Do not start implementation until docs-first readiness is complete and `progress.md` records that status.
+
 ## Prompt 1: Project Kickoff and Setup
 
 Source file inspected: `Prompt1.md.txt`.
@@ -38,4 +40,4 @@ Prompt 1 must not implement Phase 2+ math, SVG bend diagrams, calculators, refer
 
 ## Prompt Sequencing Rule
 
-Use Prompt 0 before Prompt 1. Do not start implementation until docs-first readiness is complete and `progress.md` records that status.
+Use Prompt 0 before Pro
