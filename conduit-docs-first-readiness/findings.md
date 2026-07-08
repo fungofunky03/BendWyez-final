@@ -71,3 +71,33 @@ Resolution for Phase 0: do not implement any of these items. Record them as open
 - Global Top Bar state must include Bender Selection, Material, and Trade Size.
 - State must persist across views.
 - Reload persistence is an open decision because source files differ. Do not assume production defaults.
+
+## Phase 1 Implementation Decisions
+
+Date: 2026-07-08.
+
+### Stack and versions
+
+- React 18.3.1 + React DOM 18.3.1 (React 18 chosen per `system_overview.md` "Supporting technical notes mention React 18 specifically").
+- Vite 5.4.11, TypeScript 5.6.3, Tailwind CSS 3.4.17 (with `postcss` + `autoprefixer`). Versions are pinned (no floating ranges).
+- No additional runtime dependencies were added (e.g. no state library, no `lucide-react`, no router). `system_overview.md` lists these as TBD/not required for canonical Phase 1.
+
+### State library choice (resolves TBD in `state_management.md`)
+
+- Chose React Context (`src/state/TopBarContext.tsx`) over Zustand — `frontend_architecture.md` says "choose the smallest documented approach that satisfies scope." Context satisfies persistent global Top Bar state without a new dependency.
+
+### Reload persistence (resolves open decision)
+
+- Decision: persist Top Bar state to `localStorage`. This satisfies both source variants — the canonical plan's cross-view persistence and the supplemental plan's reload persistence.
+- Storage key: `conduit-calc:topbar:v1`.
+- Behavior: only the selected option ids (`benderId`, `materialId`, `tradeSizeId`) are stored. On load, ids are re-resolved against the current option lists; unknown/stale ids resolve to `null`. Writes are best-effort and wrapped in try/catch (private-mode/quota safe). Default state is all `null`.
+
+### Top Bar options and defaults (avoids inventing production data)
+
+- Option lists in `src/data/topBarOptions.ts` contain ONLY the example values documented in `spec.md` (Bender: MLWK Hand Bender; Material: EMT/RMC/PVC; Trade Size: 1/2"/3/4"/1"), and are explicitly marked as placeholders. Full lists remain TBD.
+- No default selection is set — dropdowns render a "Select…" placeholder and state defaults to `null` (`GlobalConduitContext` documents null members). Production defaults remain TBD and were not invented.
+
+### Scope boundary
+
+- Implemented: scaffold, Tailwind dark palette + strict accent tokens, app shell (Top Bar, Side Drawer nav groups, content area, `#modal-root`), global Top Bar state with persistence.
+- Deliberately NOT implemented (Phase 2+): math utilities/formulas, SVG bend diagrams, calculator views, reference-modal content, PWA/service worker. Side Drawer navigation switches an in-app group label only; no routing (route model is TBD) and it does not discard global state.

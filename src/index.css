@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-surface text-white font-sans antialiased;
+    /* Job-site legibility: bold, high-contrast defaults. */
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* High-contrast focus ring for glare/quick-glance usability. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-interactive ring-offset-2 ring-offset-surface;
+  }
+}

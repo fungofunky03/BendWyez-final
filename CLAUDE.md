@@ -8,9 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Planned stack: React + Vite + TypeScript + Tailwind CSS.
 
-**Current status:** Phase 0 (docs-first readiness) is complete. Phase 1 (scaffold + global state) is the current authorized phase. No production code exists yet.
+**Current status:** Phase 0 (docs-first readiness) and Phase 1 (scaffold + global state) are complete. Phase 2 (Core Math Engine) is the next authorized phase. Phase 2 must not begin until its formulas and constants are verified (see `findings.md`).
 
-All project material lives in `conduit-docs-first-readiness/`.
+The application scaffold (React 18 + Vite + TypeScript + Tailwind) lives at the repo root (`src/`, `index.html`, `vite.config.ts`, etc.). All planning/execution-memory material lives in `conduit-docs-first-readiness/`.
+
+Common commands: `npm install`, `npm run dev`, `npm run build`, `npm run typecheck`.
 
 ## Required Read Order Before Coding
 

@@ -28,13 +28,20 @@ Do not reorder Phase 1 through Phase 6. Phase 0 is an added documentation-readin
 
 ### Phase 1: Project Initialization & Architecture
 
-[ ] Scaffold React/Vite/TS project.
-[ ] Configure Tailwind CSS for specific Dark Mode palette: black background, white text, blue/green/gray accents.
-[ ] Setup Global State: Top Bar Bender, Material, Size.
+[x] Scaffold React/Vite/TS project.
+[x] Configure Tailwind CSS for specific Dark Mode palette: black background, white text, blue/green/gray accents.
+[x] Setup Global State: Top Bar Bender, Material, Size.
 
 Supplemental open decision from `task execution plan.txt`:
 
-- [ ] Determine whether Phase 1 must include local reload persistence for global Top Bar state. The supplemental plan requires local storage, while the canonical uploaded Task Execution Plan only requires persistent state across views.
+- [x] Determine whether Phase 1 must include local reload persistence for global Top Bar state. The supplemental plan requires local storage, while the canonical uploaded Task Execution Plan only requires persistent state across views.
+
+Phase 1 notes:
+
+- React 18 + Vite 5 + TypeScript + Tailwind 3 scaffold created at repo root. Global state uses React Context (smallest documented option per `frontend_architecture.md`).
+- Reload persistence decision: implemented via `localStorage`, which satisfies both the canonical (cross-view) and supplemental (reload) source variants. Storage key and behavior are documented in `findings.md`.
+- Top Bar option lists use documented example values only, marked as placeholders (`src/data/topBarOptions.ts`); defaults are `null`. Full option lists and production defaults remain TBD.
+- No Phase 2+ work (math, SVG diagrams, calculators, reference-modal content, PWA) was implemented.
 
 ### Phase 2: Core Math Engine
 
