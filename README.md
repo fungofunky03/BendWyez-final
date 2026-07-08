@@ -25,3 +25,5 @@ Read, in order:
 4. `conduit-docs-first-readiness/findings.md`
 5. `conduit-docs-first-readiness/constitution.md`
 6. `conduit-docs-first-readiness/spec.md`
+7. `conduit-docs-first-readiness/docs/06-ai/llm_usage_guide.md`
+8. `conduit-docs-first-readiness/.cursorrules`
