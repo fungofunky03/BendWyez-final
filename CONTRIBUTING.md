@@ -25,7 +25,7 @@ Do not skip or reorder these files.
 
 Work is divided into phases. **Only implement the phase currently authorized in `task_plan.md`.**
 
-- Phase 0 (docs-first readiness): ✅ complete
+- Phase 0 (docs-first readiness): [complete]
 - Phase 1 (project initialization and architecture): current authorized phase
 - Phase 2+: not yet authorized
 

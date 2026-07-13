@@ -35,7 +35,7 @@ reviews:
 
   auto_review:
     enabled: true
-    # Also review draft PRs
+    # Skip draft PRs
     drafts: false
     # Trigger on base branch patterns
     base_branches:
