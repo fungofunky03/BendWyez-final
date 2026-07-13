@@ -1,0 +1,83 @@
+# CodeRabbit configuration for Conduit Bending Calculator
+# Docs: https://docs.coderabbit.ai/guides/configure-coderabbit
+
+version: "2"
+
+reviews:
+  # Review documentation changes in the docs-first directory
+  path_filters:
+    - "!node_modules/**"
+    - "!dist/**"
+    - "!build/**"
+    - "!.vite/**"
+    - "!coverage/**"
+    - "!*.lock"
+    - "!pnpm-lock.yaml"
+    - "!package-lock.json"
+    - "!yarn.lock"
+
+  # Review tone appropriate for a focused PWA project
+  profile: "chill"
+
+  # Request changes when high-severity issues are found
+  request_changes_workflow: true
+
+  # Summarize the review at the top of each PR
+  high_level_summary: true
+
+  # Post review comments on individual lines
+  review_status: true
+
+  # Collapse walkthrough to keep PR pages clean
+  collapse_walkthrough: false
+
+  poem: false
+
+  auto_review:
+    enabled: true
+    # Skip draft PRs
+    drafts: false
+    # Trigger on base branch patterns
+    base_branches:
+      - "Bendwyez-main"
+      - "main"
+
+  tools:
+    # Enable all static analysis tools appropriate for TypeScript/React
+    ast-grep:
+      enabled: true
+
+  finishing_touches:
+    # Suggest docstrings for new functions
+    docstrings:
+      enabled: true
+
+chat:
+  auto_reply: true
+
+# Path-specific instructions
+path_instructions:
+  - path: "conduit-docs-first-readiness/**"
+    instructions: |
+      This directory is the docs-first source of truth for the Conduit Bending Calculator.
+      When reviewing changes here:
+      - Verify that any new formulas or constants are cited from a reliable source and logged in findings.md.
+      - Ensure phase gating is respected: no implementation details should appear before Phase 1 is authorized.
+      - Check that execution-memory files (progress.md, task_plan.md, findings.md) are updated consistently.
+      - Flag any invented values (shrink constants, bender defaults, conduit dimensions) that lack a cited source.
+
+  - path: "src/**"
+    instructions: |
+      This is the React + Vite + TypeScript application source.
+      When reviewing changes here:
+      - Enforce the dark high-contrast visual system (black/charcoal backgrounds, white/light-gray text).
+      - Verify color semantics: blue = interactive/reference lines, green = bent conduit only, gray = straight conduit.
+      - All trig calculations must convert degrees to radians before passing to Math functions.
+      - No hardcoded formula constants unless verified and logged in conduit-docs-first-readiness/findings.md.
+      - Calculator inputs/outputs must be overlaid on SVG diagrams with dashed leader lines, not standalone form fields.
+      - No Submit or Calculate buttons — calculations must update dynamically on input change.
+
+  - path: "**/*.test.{ts,tsx}"
+    instructions: |
+      Ensure tests cover edge cases for conduit bend calculations.
+      Verify that degree-to-radian conversions are tested explicitly.
